@@ -32,8 +32,7 @@ module XLIFFer
       def get_target(xml)
         targets = xml.xpath("./target")
         raise MultipleElement, "Should have only one target tag" if targets.size > 1
-        raise NoElement, "Should have one taget tag" unless targets.size == 1
-        targets.first.text
+        targets.first ? targets.first.text : ""
       end
     end
   end
