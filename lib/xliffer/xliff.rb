@@ -3,7 +3,7 @@ require 'xliffer/xliff/file'
 
 module XLIFFer
   class XLIFF
-    attr_reader :version, :files :raw_xml
+    attr_reader :version, :files, :raw_xml
     def initialize(xliff = nil)
       text = case xliff
              when ::IO then xliff.read
