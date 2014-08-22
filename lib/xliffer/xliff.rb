@@ -3,7 +3,7 @@ require 'xliffer/xliff/file'
 
 module XLIFFer
   class XLIFF
-    attr_reader :version, :files
+    attr_reader :version, :files :raw_xml
     def initialize(xliff = nil)
       text = case xliff
              when ::IO then xliff.read
@@ -26,6 +26,7 @@ module XLIFFer
       root = xml.xpath('/xliff')
       raise FormatError, "Not a XLIFF file" unless root.any?
 
+      @raw_xml = text
       @version = get_version(root)
       @files = parse_files(root)
     end
